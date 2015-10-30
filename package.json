@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/seyself/create-json-from-spreadsheet#readme",
   "dependencies": {
+    "exec": "^0.2.1",
     "google-spreadsheet": "^1.0.1"
   }
 }

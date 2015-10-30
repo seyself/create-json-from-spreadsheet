@@ -1,6 +1,8 @@
 'use strict';
 
 var fs = require('fs');
+var path = require('path');
+var exec = require('exec');
 var GoogleSpreadsheet = require('google-spreadsheet');
 
 function gid_to_wid(gid) {
@@ -11,14 +13,17 @@ function gid_to_wid(gid) {
 
 module.exports = function(params, callback)
 {
-    var credential = require(params.credential);
+    var cwd = process.cwd();
+    var credential_file = path.join(cwd, params.credential);
+    var credential = require(credential_file);
     var spreadSheet = new GoogleSpreadsheet(params.file_id);
     var queue = [];
     var sheet_ids = [];
     var len = params.sheets.length;
     for (var i=0; i<len; i++)
     {
-        var worksheet_id = gid_to_wid(params.sheets[i].gid || 0);
+        var sheet = params.sheets[i];
+        var worksheet_id = gid_to_wid(sheet.gid || 0);
         sheet_ids.push(worksheet_id);
     }
 
@@ -80,10 +85,12 @@ module.exports = function(params, callback)
                     data[key] = value;
                 }
                 var json = JSON.stringify(data, null, "  ");
-
-                fs.writeFileSync(params.dest, json, 'utf-8');
-
-                next();
+                var dir = path.dirname(params.dest);
+                var fileName = path.basename(params.dest);
+                exec('mkdir -p ' + path.join(cwd, dir), function(){
+                    fs.writeFileSync(params.dest, json, 'utf-8');
+                    next();
+                })
             });
         }
         else
