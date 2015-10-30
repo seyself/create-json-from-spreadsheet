@@ -1,0 +1,26 @@
+{
+  "name": "create-json-from-spreadsheet",
+  "version": "1.0.0",
+  "description": "Create JSON File from Google Spreadsheet",
+  "main": "index.js",
+  "scripts": {
+    "test": "node example.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seyself/create-json-from-spreadsheet.git"
+  },
+  "keywords": [
+    "json",
+    "spreadsheet"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seyself/create-json-from-spreadsheet/issues"
+  },
+  "homepage": "https://github.com/seyself/create-json-from-spreadsheet#readme",
+  "dependencies": {
+    "google-spreadsheet": "^1.0.1"
+  }
+}

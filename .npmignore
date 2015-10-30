@@ -1,0 +1,14 @@
+.DS_Store
+*.log
+build
+.idea
+sandbox
+test.js
+test/out-fixtures/*
+test/watch-*.txt
+.gitignore
+.npmignore
+credential.json
+sheet1.json
+sheet2.json
+sheet3.json

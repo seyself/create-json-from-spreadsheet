@@ -1,0 +1,13 @@
+.DS_Store
+*.log
+node_modules
+bower_components
+build
+.idea
+sandbox
+test/out-fixtures/*
+test/watch-*.txt
+credential.json
+sheet1.json
+sheet2.json
+sheet3.json
